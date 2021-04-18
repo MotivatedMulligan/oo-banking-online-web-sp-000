@@ -34,7 +34,7 @@ end
   #   @status = "complete"
   #   #puts "Transaction was already executed"
   # end
-end
+#end
 
   def reverse_transfer
   #if valid? && receiver.balance > amount && self.status == "complete"
@@ -45,5 +45,5 @@ end
       else
       @status == "rejected"
     end
-
+end
  end
