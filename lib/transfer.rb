@@ -17,7 +17,7 @@ def execute_transaction
     sender.withdrawal(self.amount)
     receiver.deposit(self.amount)
     self.status = "complete"
-  else 
+  else
     self.status = "rejected"
     "Transaction rejected. Please check your account balance."
   end
@@ -25,7 +25,7 @@ end
   # if @sender.balance < @amount
   #    @status = "rejected"
   #    puts "Transaction rejected. Please check your account balance."
-  # 
+  #
   # elsif @status == "complete"
   #       puts "Transaction was already executed"
   # else
