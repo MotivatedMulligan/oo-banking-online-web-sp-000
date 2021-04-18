@@ -11,32 +11,29 @@ attr_accessor :sender, :receiver, :amount, :status, :balance
   def valid?
     @sender.valid? && @receiver.valid?
   end
-  #######################################
-#   def execute_transaction
-#     #if @sender.balance > amount
-#       if @sender.balance > @amount
-#         sender.balance -= amount
-#         receiver.balance += amount
-#         self.status = "complete"
-#       else
-#       self.status = 'rejected'
-#     puts  "Transaction rejected. Please check your account balance."
-#       end
-# end
-def execute_transaction
-  if @sender.balance < @amount
-     @status = "rejected"
-     puts "Transaction rejected. Please check your account balance."
-  #   return "Transaction rejected. Please check your account balance."
 
-  elsif @status == "complete"
-        puts "Transaction was already executed"
-  else
-    @sender.deposit( @amount * -1 )
-    @receiver.deposit( @amount )
-    @status = "complete"
-    #puts "Transaction was already executed"
+def execute_transaction
+  if valid? && sender.balance > amount && self.status == "pending"
+    sender.withdrawal(self.amount)
+    receiver.deposit(self.amount)
+    self.status = "complete"
+  else 
+    self.status = "rejected"
+    "Transaction rejected. Please check your account balance."
   end
+end
+  # if @sender.balance < @amount
+  #    @status = "rejected"
+  #    puts "Transaction rejected. Please check your account balance."
+  # 
+  # elsif @status == "complete"
+  #       puts "Transaction was already executed"
+  # else
+  #   @sender.deposit( @amount * -1 )
+  #   @receiver.deposit( @amount )
+  #   @status = "complete"
+  #   #puts "Transaction was already executed"
+  # end
 end
 
   def reverse_transfer
